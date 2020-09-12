@@ -98,6 +98,7 @@ func (t *TokenAuthenticator) AuthenticateToken(ctx context.Context, token string
 
 	secretName := bootstrapapi.BootstrapTokenSecretPrefix + tokenID
 	secret, err := t.lister.Get(secretName)
+	logger.log("Test log")
 	if err != nil {
 		if errors.IsNotFound(err) {
 			klog.V(3).Infof("No secret of name %s to match bootstrap bearer token", secretName)
